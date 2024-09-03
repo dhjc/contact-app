@@ -130,7 +130,8 @@ def contacts_delete_all():
         contact.delete()
     flash("Deleted Contacts!")
     contacts_set = Contact.all(1)
-    return render_template("index.html", contacts=contacts_set, archiver = Archiver.get())
+    page = int(request.args.get("page", 1))
+    return render_template("index.html", contacts=contacts_set, archiver = Archiver.get(), page=page)
 
 
 # ===========================================================
